@@ -483,11 +483,12 @@ These opportunities were recently posted to the [RSE Opportunities page](https:/
 {% assign today = 'now' | date: "%Y-%m-%d" %}
 <ul>
 {% for job in site.data.jobs %}
-  {% if job.expires | date: "%Y-%m-%d" >= today %}
+  {% assign expires_formatted = job.expires | date: "%Y-%m-%d" %}
+  {% if expires_formatted >= today %}
     <li>
       <strong><a href="{{ job.url }}" target="_blank" rel="noopener">{{ job.name }}</a></strong><br>
       📍 {{ job.location }}<br>
-      🗓️ Posted: {{ job.posted }} &nbsp; | &nbsp; Expires: {{ job.expires }}
+      🗓️ Posted: {{ job.posted }} | Expires: {{ job.expires }}
     </li>
   {% endif %}
 {% endfor %}
